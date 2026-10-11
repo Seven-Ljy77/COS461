@@ -11,7 +11,16 @@ SEND_BUFFER_SIZE = 2048
 
 def client(server_ip, server_port):
     """TODO: Open socket and send message from sys.stdin"""
-    pass
+    input_stream = getattr(sys.stdin, "buffer", sys.stdin)
+    connection = socket.create_connection((server_ip, server_port))
+    try:
+        while True:
+            data = input_stream.read(SEND_BUFFER_SIZE)
+            if not data:
+                break
+            connection.sendall(data)
+    finally:
+        connection.close()
 
 
 def main():
