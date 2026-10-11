@@ -116,7 +116,7 @@ int client(char *server_ip, char *server_port) {
 
     // 只有 ferror(stdin) 返回 0 时表示读取结束
     // 返回非零表示读取报错
-    if (ferror(stdin) == 0) {
+    if (ferror(stdin) != 0) {
         fprintf(stderr, "Failed to read standard input\n");
         close(sockfd);
         return 1;
