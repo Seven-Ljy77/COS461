@@ -20,8 +20,9 @@
 
 // 根据 getaddrinfo 的 result 创建 socket
 int create_socket(struct addrinfo *result) {
+    struct addrinfo *address;
     int sockfd = -1;
-    for (struct addrinfo *address = result; address != NULL; address = address->ai_next) {
+    for (address = result; address != NULL; address = address->ai_next) {
         // socket 函数三个参数：地址类型，socket 类型，协议
         //                     AF_INET  SOCK_STREAM  0
         sockfd = socket(address->ai_family , address->ai_socktype , address->ai_protocol);
