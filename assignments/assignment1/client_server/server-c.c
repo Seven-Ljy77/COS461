@@ -25,7 +25,8 @@ int create_socket(struct addrinfo *result) {
     int listen_fd = -1;
 
     // 不断尝试能创建 socket 并和本机端口绑定的 result
-    for (address = result ; address != NULL ; address = address->ai_next) {
+    // 这里起始没有循环，根据老师要求进行修改（不用循环 result）
+    for (address = result ; address == result ; address = address->ai_next) {
         listen_fd = socket(address->ai_family , address->ai_socktype , address->ai_protocol);
 
         if (listen_fd == -1) { // 创建 socket 失败
