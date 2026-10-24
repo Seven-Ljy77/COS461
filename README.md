@@ -5,3 +5,9 @@
 作业代码 [assignments/assignments1/](assignments/assignment1/)
 
 实验报告 [assignments/assignments1/report/report.md](assignments/assignment1/report/report.md)
+
+## Assignment2
+
+作业代码 [assignments/assignments2/](assignments/assignment2/)
+
+实验报告 [assignments/assignments2/report/report.md](assignments/assignment2/report/report.md)
