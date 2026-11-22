@@ -11,3 +11,15 @@
 作业代码 [assignments/assignments2/](assignments/assignment2/)
 
 实验报告 [assignments/assignments2/report/report.md](assignments/assignment2/report/report.md)
+
+## Assignment3
+
+作业代码 [assignments/assignments3/](assignments/assignment3/)
+
+实验报告 [assignments/assignments3/report/report.md](assignments/assignment3/report/report.md)
+
+## Assignment4
+
+作业代码 [assignments/assignments4/](assignments/assignment4/)
+
+实验报告 [assignments/assignments4/report/report.md](assignments/assignment4/report/report.md)
