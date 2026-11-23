@@ -236,7 +236,7 @@ vagrant@cos461:/vagrant/assignment4$
 
 ```
 // 启动代理服务器
-./http_proxy
+./http_proxy 8000
 
 // 另一个终端内
 vagrant@cos461:/vagrant/assignment4$ ab -X 127.0.0.1:8000 -n 200 -c 10 http://example.com/
