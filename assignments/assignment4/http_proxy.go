@@ -101,6 +101,7 @@ func handleClient(client net.Conn) {
 		return
 	}
 
+	// 尝试读取第一个字节，如果目标网站一个字节都没有返回，则代表出现错误，代理返回 500
 	response := bufio.NewReader(upstream)
 	if _, err := response.Peek(1); err != nil {
 		ResponseError(client, err)
