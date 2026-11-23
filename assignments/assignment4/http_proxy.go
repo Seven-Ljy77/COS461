@@ -61,7 +61,7 @@ func handleClient(client net.Conn) {
 	// 用 bufio 库 (buffered I/O)，实现带缓冲区的 http 读取与解析
 	request, err := http.ReadRequest(bufio.NewReader(client))
 	if err != nil {
-		ResponseError(client, err)
+		ResponseError(client, fmt.Errorf("read client request: %v", err))
 		return
 	}
 
@@ -88,7 +88,7 @@ func handleClient(client net.Conn) {
 	// 代理服务器主动建立到目标地址的连接
 	upstream, err := net.Dial("tcp", address)
 	if err != nil {
-		ResponseError(client, err)
+		ResponseError(client, fmt.Errorf("connect upstream: %v", err))
 		return
 	}
 	defer upstream.Close()
@@ -97,14 +97,14 @@ func handleClient(client net.Conn) {
 	request.Header.Set("Connection", "close")
 	err = request.Write(upstream)
 	if err != nil {
-		ResponseError(client, err)
+		ResponseError(client, fmt.Errorf("write upstream request: %v", err))
 		return
 	}
 
 	// 尝试读取第一个字节，如果目标网站一个字节都没有返回，则代表出现错误，代理返回 500
 	response := bufio.NewReader(upstream)
 	if _, err := response.Peek(1); err != nil {
-		ResponseError(client, err)
+		ResponseError(client, fmt.Errorf("read upstream response: %v", err))
 		return
 	}
 
