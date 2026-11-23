@@ -1,0 +1,374 @@
+vagrant@cos461:/vagrant/assignment4$ python test_scripts/py2/test_proxy.py http_proxy_DNS 8080
+Binary: http_proxy_DNS
+Running on port 8080
+
+HTTP proxy listening on 0.0.0.0:8080
+### 1. Testing: http://example.com/
+Proxy success : example.com:80
+http://example.com/: SUCCESS
+________________________________________
+
+### 2. Testing: http://sns.princeton.edu/projects/
+Proxy success : sns.princeton.edu:80
+http://sns.princeton.edu/projects/: SUCCESS
+________________________________________
+
+### 3. Testing: http://randomwalker.info/
+Proxy success : randomwalker.info:80
+http://randomwalker.info/: SUCCESS
+________________________________________
+
+Summary:
+        3 of 3 tests passed.
+vagrant@cos461:/vagrant/assignment4$ python test_scripts/py2/test_proxy_conc.py http_proxy_DNS 8080
+Binary: http_proxy_DNS
+Running on port 8080
+
+HTTP proxy listening on 0.0.0.0:8080
+### 1. Testing 2 concurrent connects to http://example.com/
+Proxy success : example.com:80
+Proxy request failed: EOF
+Connect to http://example.com/, 2 concurrently: SUCCESS
+Proxy request failed: EOF
+________________________________________
+
+### 2. Testing 10 concurrent connects to http://example.com/
+Proxy success : example.com:80
+Connect to http://example.com/, 10 concurrently: SUCCESS
+________________________________________
+
+### 3. Testing 2 concurrent fetches to http://example.com/
+Proxy request failed: EOF
+Proxy request failed: EOF
+Proxy request failed: EOF
+Proxy request failed: EOF
+Proxy request failed: EOF
+Proxy request failed: EOF
+Proxy request failed: EOF
+Proxy request failed: EOF
+Proxy request failed: EOF
+Proxy request failed: EOF
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Fetch to http://example.com/, 2 concurrently: SUCCESS
+________________________________________
+
+### 4. Testing 10 concurrent fetches to http://example.com/
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Fetch to http://example.com/, 10 concurrently: SUCCESS
+________________________________________
+
+### 5. Testing 2 concurrent split fetches
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Fetch to http://example.com/, 2 concurrently: SUCCESS
+________________________________________
+
+### 6. Testing 10 concurrent split fetches
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Fetch to http://example.com/, 10 concurrently: SUCCESS
+________________________________________
+
+### 7. Testing apache benchmark on args [-n 20 -c 1]
+    This is ApacheBench, Version 2.3 <$Revision: 1528965 $>
+    Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+    Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+    Benchmarking example.com [through 127.0.0.1:8080] (be patient).....done
+
+
+    Server Software:        cloudflare
+    Server Hostname:        example.com
+    Server Port:            80
+
+    Document Path:          /
+    Document Length:        589 bytes
+
+    Concurrency Level:      1
+    Time taken for tests:   9.622 seconds
+    Complete requests:      20
+    Failed requests:        0
+    Total transferred:      18565 bytes
+    HTML transferred:       11780 bytes
+    Requests per second:    2.08 [#/sec] (mean)
+    Time per request:       481.099 [ms] (mean)
+    Time per request:       481.099 [ms] (mean, across all concurrent requests)
+    Transfer rate:          1.88 [Kbytes/sec] received
+
+    Connection Times (ms)
+    min  mean[+/-sd] median   max
+    Connect:        0    0   0.4      0       1
+    Processing:   409  481 116.9    443     837
+    Waiting:      407  479 117.1    442     837
+    Total:        409  481 116.9    443     837
+
+    Percentage of the requests served within a certain time (ms)
+    50%    443
+    66%    453
+    75%    479
+    80%    495
+    90%    779
+    95%    837
+    98%    837
+    99%    837
+    100%    837 (longest request)
+http://example.com/ with args -n 20 -c 1: SUCCESS
+________________________________________
+
+### 8. Testing apache benchmark on args [-n 200 -c 10]
+    This is ApacheBench, Version 2.3 <$Revision: 1528965 $>
+    Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+    Licensed to The Apache Software Foundation, http://www.apache.org/
+
+    Benchmarking example.com [through 127.0.0.1:8080] (be patient)
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+    Completed 100 requests
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+Proxy success : example.com:80
+    apr_pollset_poll: The timeout specified has expired (70007)
+    Total of 199 requests completed
+http://example.com/ with args -n 200 -c 10: FAILURE
+HTTP proxy listening on 0.0.0.0:8081
+________________________________________
+
+Summary:
+        Type multi-process: 7 of 8 tests passed.
+vagrant@cos461:/vagrant/assignment4$
